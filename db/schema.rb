@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170324111612) do
+ActiveRecord::Schema.define(version: 20170327133854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "followings", id: false, force: :cascade do |t|
+    t.integer "follower_id", null: false
+    t.integer "object_id",   null: false
+  end
 
   create_table "identities", force: :cascade do |t|
     t.integer  "user_id"
@@ -22,6 +27,20 @@ ActiveRecord::Schema.define(version: 20170324111612) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["provider", "uid"], name: "index_identities_on_provider_and_uid", using: :btree
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title",                   null: false
+    t.text     "text",                    null: false
+    t.string   "slug",                    null: false
+    t.string   "source"
+    t.string   "tags",       default: [],              array: true
+    t.integer  "likes",      default: [],              array: true
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "kind",                    null: false
+    t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -33,6 +52,7 @@ ActiveRecord::Schema.define(version: 20170324111612) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "avatar_uid"
+    t.string   "slug",                          null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 

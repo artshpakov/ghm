@@ -1,2 +1,4 @@
-h1 Admin::Dashboard#index
-p Find me in app/views/admin/dashboard/index.html.slim
+- if can? :create, Article
+  = link_to new_post_path(:articles), class: 'btn btn-primary'
+    => fa_icon :plus
+    | Новая статья

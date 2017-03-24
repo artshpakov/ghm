@@ -1,0 +1,12 @@
+.row
+  .col-md-12
+    h2
+      b> = "##{ params[:tag] }"
+      small = "(всего #{ @total_count })"
+    br
+
+.row
+  .col-md-12
+    ul.list-unstyled role="preview-list"
+      = render partial: 'previews', locals: { posts: @articles }
+    .text-center = link_to 'Загрузить еще', 'javascript:;', class: 'btn btn-primary', role: 'load-more', data: { url: tag_articles_path(tag: params[:tag]) }

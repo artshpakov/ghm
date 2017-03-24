@@ -1,7 +1,14 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
+
+  include Sluggable
 
   module Roles
     ADMIN = :admin
+    EDITOR = :editor
+
+    def self.to_a
+      [ADMIN, EDITOR]
+    end
   end
 
 
@@ -12,13 +19,18 @@ class User < ActiveRecord::Base
   end
 
   has_many :identities, dependent: :destroy
+  has_many :posts, dependent: :destroy
+  has_many :articles, dependent: :destroy
+  has_many :blog_posts, dependent: :destroy
+  has_and_belongs_to_many :followers, class_name: 'User', join_table: 'followings', foreign_key: 'object_id', association_foreign_key: 'follower_id'
+  has_and_belongs_to_many :follows, class_name: 'User', join_table: 'followings', foreign_key: 'follower_id', association_foreign_key: 'object_id'
 
   validates :email, uniqueness: true
   validates :password, length: { minimum: 6 }, if: -> { password.present? }
   validates :password, confirmation: true, if: :new_record?
   validates :password_confirmation, presence: true, if: :new_record?
 
-  before_create :generate_password
+  before_create :generate_password, :generate_avatar
   after_create :notify_on_create
   after_update :notify_on_update
 
@@ -52,7 +64,16 @@ class User < ActiveRecord::Base
   end
 
 
+  def blog
+    Blog.find(slug)
+  end
+
+
   protected
+
+  def generate_avatar
+    self.avatar = ImageManager.initial_avatar(name) unless avatar.present?
+  end
 
   def notify_on_create
     AuthMailer.signup(self).deliver_now

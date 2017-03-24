@@ -1,5 +1,6 @@
-row
+.row
   .col-xs-12.col-md-4.col-md-offset-4
+    hr
     = form_tag auth_commit_path(provider: @identity.provider, uid: @identity.uid)
       = hidden_field_tag :profile, @identity.user.profile.to_json
       .form-group
@@ -7,3 +8,4 @@ row
         = email_field_tag :'user_attributes[email]', @identity.user.email, placeholder: 'Email', class: "form-control", disabled: @identity.user.email.present?
       .form-actions
         button.btn.btn-primary type="submit" = t('auth.signup.submit')
+    hr

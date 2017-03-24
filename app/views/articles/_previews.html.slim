@@ -1,0 +1,26 @@
+- posts.each do |post|
+  li.article
+    .header
+      .pull-right
+        ul.list-inline.controls
+          - if can? :edit, post
+            li
+              = link_to edit_post_path(post)
+                = fa_icon :edit
+          - if can? :destroy, post
+            li
+              = link_to post_path(post), method: :delete, data: { confirm: 'Are you sure?' }
+                = fa_icon :trash
+
+      h3 = link_to post.title, article_path(post), class: 'title'
+      ul.list-inline.details
+        li
+          => fa_icon 'clock-o'
+          | #{ time_ago_in_words post.created_at } назад
+        li.like == like_link post
+        li
+          ul.list-inline
+            - post.tags.each do |tag|
+              li = link_to "##{tag}", tag_articles_path(tag: tag), class: "label label-primary"
+
+    = sanitize truncate(post.text, 500)

@@ -1,5 +1,7 @@
 class ProfileController < ApplicationController
 
+  layout '_wide'
+
   before_action :require_login
 
 

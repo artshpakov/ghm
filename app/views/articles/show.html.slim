@@ -1,0 +1,13 @@
+.row
+  .col-md-12.post-details
+    h1.title = @article.title
+
+    .content = sanitize @article.text
+
+    ul.list-inline.controls
+      - if can? :edit, @article
+        li = link_to edit_post_path(@article)
+          = fa_icon :edit
+      - if can? :destroy, @article
+        li = link_to post_path(@article), method: :delete, data: { confirm: 'Are you sure?' }
+          = fa_icon :trash

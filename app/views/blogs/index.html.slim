@@ -1,0 +1,9 @@
+.row
+  .col-md-4
+    h3 Свежее
+    - @recent.each do |blog|
+      = render partial: 'card', locals: { blog: blog }
+  .col-md-4
+    h3 Популярное
+  .col-md-4
+    h3 Рекомендуем

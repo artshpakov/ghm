@@ -8,6 +8,10 @@ gem 'pry-rails'
 gem 'slim-rails'
 gem 'russian'
 gem 'jbuilder', '~> 2.5'
+gem 'babosa'
+gem 'kaminari'
+gem 'sanitize'
+gem 'active_link_to'
 
 gem 'sorcery'
 gem 'cancancan'
@@ -24,6 +28,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'font-awesome-sass', '~> 4.6.2'
+gem 'font-awesome-rails'
 
 group :development do
   gem 'byebug', platform: :mri

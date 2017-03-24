@@ -1,5 +1,8 @@
 class AuthController < ApplicationController
 
+  layout '_basic', only: :callback
+
+
   def change_password
     if @user = User.find_by_email(params[:email])
       @user.generate_password && @user.save

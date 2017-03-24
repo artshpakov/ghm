@@ -1,0 +1,14 @@
+= render partial: 'header'
+.row
+  .col-md-12.post-details
+    h1.title = @blog_post.title
+
+    .content = sanitize @blog_post.text
+
+    ul.list-inline.controls
+      - if can? :edit, @blog_post
+        li = link_to edit_post_path(@blog_post)
+          = fa_icon :edit
+      - if can? :destroy, @blog_post
+        li = link_to post_path(@blog_post), method: :delete, data: { confirm: 'Are you sure?' }
+          = fa_icon :trash

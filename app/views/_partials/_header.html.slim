@@ -1,18 +1,19 @@
 nav.navbar.navbar-default
   .container-fluid
-    .navbar-header
-      = link_to 'GHM', root_path, class: 'navbar-brand'
-
-    ul.nav.navbar-nav
-      li: a href="#" Posts
-      / li: a href="#" Blogs
-      / li: a href="#" Q&A
+    .navbar-header: .navbar-brand = link_to '', root_path, class: 'logo'
 
     .navbar-text.pull-right
-      - if logged_in?
-        b => link_to current_user.name, profile_path
-        | [ #{ link_to 'выйти', session_path(current_user.id), method: :delete } ]
-      - else
-        => link_to 'войти', signin_path
-        ' |
-        => link_to 'зарегистрироваться', signup_path
+      ul.list-inline
+        li
+          - if logged_in?
+            = link_to profile_path
+              = avatar current_user, :tiny
+            = link_to 'Выйти', session_path(current_user.id), class: 'btn btn-default', method: :delete
+          - else
+            => link_to 'войти', signin_path
+            ' |
+            => link_to 'зарегистрироваться', signup_path
+        li
+          = link_to (logged_in? ? new_post_path(kind: 'blog_posts') : signin_path), class: 'btn btn-primary'
+            => fa_icon :plus
+            | Новый пост

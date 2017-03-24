@@ -19,6 +19,7 @@ Dragonfly.app.configure do
               bucket_name: S3['bucket'],
               access_key_id: S3['key'],
               secret_access_key: S3['secret'],
+              region: S3['region'],
               url_scheme: 'https'
   end
 end

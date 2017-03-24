@@ -1,0 +1,6 @@
+ul.nav
+  li = active_link_to 'Лента', root_path, active: :exclusive
+  li = active_link_to 'Статьи', articles_path
+  li = active_link_to 'Блоги', blogs_path
+  - if can? :enter, :admin
+    li = active_link_to "Администрирование", admin_root_path

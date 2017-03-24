@@ -1,0 +1,16 @@
+= render partial: 'header'
+
+- if @blog.followers.any?
+  .row.followers
+    .col-md-12
+      p Followers (#{ @blog.user.followers.count })
+      - @blog.followers.each do |user|
+        = avatar user, :tiny, class: 'userpic'
+
+  hr
+
+.row
+  .col-md-12
+    ul.list-unstyled role="preview-list"
+      li = render partial: 'blog_posts/previews', locals: { posts: @blog.posts }
+    .text-center = link_to 'Загрузить еще', 'javascript:;', class: 'btn btn-primary', role: 'load-more', data: { url: blog_posts_path(@blog) }

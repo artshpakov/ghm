@@ -1,0 +1,8 @@
+= content_for :header
+  = render partial: '_partials/header'
+
+= render 'layouts/basic'
+  = yield
+
+= content_for :footer
+  = render partial: '_partials/footer'

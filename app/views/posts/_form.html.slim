@@ -1,0 +1,10 @@
+= form_for post, url: (post.new_record? ? posts_path : post_path(post)), as: 'post' do |f|
+  = f.hidden_field :kind
+  .form-group
+    label.control-label Заголовок
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    label.control-label Текст
+    = f.text_area :text, class: 'form-control', rows: 10
+  .form-actions
+    = f.submit 'Сохранить', class: 'button btn btn-primary'
