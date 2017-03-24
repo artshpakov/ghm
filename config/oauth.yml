@@ -1,0 +1,10 @@
+development:
+  facebook:
+    name:       "facebook"
+    app_id:     "778009828890303"
+    app_secret: "f11dbbfe3821b63883ad5c844ddcc69b"
+  vk:
+    name:       "vkontakte"
+    app_id:     "4201311"
+    app_secret: "5qFEBPOnhd4aFAOCS4Eh"
+    scope:      "email"

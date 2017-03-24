@@ -9,6 +9,11 @@ gem 'slim-rails'
 gem 'russian'
 gem 'jbuilder', '~> 2.5'
 
+gem 'sorcery'
+gem 'cancancan'
+gem 'omniauth-facebook'
+gem 'omniauth-vkontakte'
+
 gem 'sass-rails', '~> 5.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
@@ -21,4 +26,5 @@ group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'letter_opener'
 end

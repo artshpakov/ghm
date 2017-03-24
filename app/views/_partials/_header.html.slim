@@ -5,5 +5,14 @@ nav.navbar.navbar-default
 
     ul.nav.navbar-nav
       li: a href="#" Posts
-      li: a href="#" Blogs
-      li: a href="#" Q&A
+      / li: a href="#" Blogs
+      / li: a href="#" Q&A
+
+    .navbar-text.pull-right
+      - if logged_in?
+        b => current_user.name
+        | [ #{ link_to 'выйти', session_path(current_user.id), method: :delete } ]
+      - else
+        => link_to 'войти', signin_path
+        ' |
+        => link_to 'зарегистрироваться', signup_path
