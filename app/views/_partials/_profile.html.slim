@@ -1,0 +1,13 @@
+.panel.panel-default.text-center
+  .panel-body
+    a role="avatar" href="javascript:;"
+      = avatar :profile, class: 'center'
+    h4 = current_user.name
+    div
+      - current_user.roles.each do |role|
+        span.label.label-info => t "user.role.#{role}"
+
+div style="display:none"
+  = form_tag profile_avatar_path, method: :put, multipart: true, role: 'avatar-form'
+    = file_field_tag :image
+    = submit_tag 'Save'

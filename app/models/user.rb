@@ -1,9 +1,14 @@
 class User < ActiveRecord::Base
 
-  authenticates_with_sorcery!
-
   module Roles
     ADMIN = :admin
+  end
+
+
+  authenticates_with_sorcery!
+
+  dragonfly_accessor :avatar do
+    after_assign { |img| img.thumb!('200x200^') rescue nil }
   end
 
   has_many :identities, dependent: :destroy

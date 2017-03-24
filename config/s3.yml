@@ -1,0 +1,8 @@
+default: &default
+  key: AKIAJAGRFAH5JPZHGYHQ
+  secret: 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
+  region: 'eu-central-1'
+
+staging:
+  <<: *default
+  bucket: estatestage

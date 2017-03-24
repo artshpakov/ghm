@@ -31,6 +31,7 @@ class AuthController < ApplicationController
     end
 
     if identity.persisted?
+      identity.user.update avatar: ImageManager.download(identity.user.profile['image'])
       auto_login identity.user
     else
       flash[:error] = { error: identity.errors } unless identity.persisted?

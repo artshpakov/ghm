@@ -14,6 +14,11 @@ gem 'cancancan'
 gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
 
+gem 'dragonfly'
+gem 'dragonfly-s3_data_store'
+gem 'mini_magick'
+gem 'avatar_magick'
+
 gem 'sass-rails', '~> 5.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'

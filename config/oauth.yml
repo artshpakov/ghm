@@ -3,6 +3,7 @@ development:
     name:       "facebook"
     app_id:     "778009828890303"
     app_secret: "f11dbbfe3821b63883ad5c844ddcc69b"
+    image_size: "large"
   vk:
     name:       "vkontakte"
     app_id:     "4201311"

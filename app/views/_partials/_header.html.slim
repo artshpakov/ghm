@@ -10,7 +10,7 @@ nav.navbar.navbar-default
 
     .navbar-text.pull-right
       - if logged_in?
-        b => current_user.name
+        b => link_to current_user.name, profile_path
         | [ #{ link_to 'выйти', session_path(current_user.id), method: :delete } ]
       - else
         => link_to 'войти', signin_path

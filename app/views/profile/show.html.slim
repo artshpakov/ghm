@@ -1,0 +1,35 @@
+.row
+  .col-xs-3
+    = render partial: '_partials/profile'
+  .col-xs-9
+    .panel.panel-default
+      .panel-heading Общая информация
+      .panel-body
+        = form_tag profile_path, method: :put
+          .form-group
+            label.control-label Email
+            = text_field_tag :email, current_user.email, class: 'form-control'
+          .form-group
+            label.control-label Имя
+            = text_field_tag :'profile[firstname]', current_user.profile['firstname'], class: 'form-control'
+          .form-group
+            label.control-label Фамилия
+            = text_field_tag :'profile[lastname]', current_user.profile['lastname'], class: 'form-control'
+          .form-actions
+            button.btn.btn-primary type="submit" = t('save')
+
+    .panel.panel-default
+      .panel-heading Сменить пароль
+      .panel-body
+        = form_tag profile_password_path, method: :put
+          .form-group
+            label.control-label Старый пароль
+            = password_field_tag :old_password, nil, class: 'form-control'
+          .form-group
+            label.control-label Новый пароль
+            = password_field_tag :password, nil, class: 'form-control'
+          .form-group
+            label.control-label Подтверждение пароля
+            = password_field_tag :password_confirmation, nil, class: 'form-control'
+          .form-actions
+            button.btn.btn-primary type="submit" = t('save')
