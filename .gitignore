@@ -1,0 +1,11 @@
+.DS_Store
+log
+tmp
+public/assets
+public/uploads
+public/system
+.bundle
+REVISION
+assets_manifest.json
+config/database.yml
+vendor/bundle/

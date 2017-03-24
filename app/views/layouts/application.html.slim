@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title GHM
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    = stylesheet_link_tag :application, media: 'all'
+    = csrf_meta_tags
+
+  body
+    = render partial: '_partials/header'
+    .container
+      - if flash[:notice]
+        .alert.alert-success = flash[:notice]
+      - if flash[:error]
+        .alert.alert-danger = flash[:error]
+
+      = yield
+
+  = javascript_include_tag :application
