@@ -32,4 +32,11 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'letter_opener'
+  gem 'mina', '~> 0.3.8'
+  gem 'mina-puma', require: false
+  gem 'mina-multistage', require: false
+end
+
+group :production do
+  gem 'rack-cache'
 end

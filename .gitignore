@@ -8,4 +8,4 @@ public/system
 REVISION
 assets_manifest.json
 config/database.yml
-vendor/bundle/
+vendor/bundle
