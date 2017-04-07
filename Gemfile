@@ -12,6 +12,7 @@ gem 'babosa'
 gem 'kaminari'
 gem 'sanitize'
 gem 'active_link_to'
+gem 'gon'
 
 gem 'sorcery'
 gem 'cancancan'
@@ -24,11 +25,13 @@ gem 'mini_magick'
 gem 'avatar_magick'
 
 gem 'sass-rails', '~> 5.0'
-gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'font-awesome-sass', '~> 4.6.2'
 gem 'font-awesome-rails'
+
+gem 'sprockets-es6'
+gem 'react-rails'
 
 group :development do
   gem 'byebug', platform: :mri

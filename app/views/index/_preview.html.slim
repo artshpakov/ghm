@@ -1,8 +1,8 @@
-.post-index
+.post-index.post-preview
   .info.text-center
     = avatar post.user, :inline
     ul.list-inline
-      li.like == like_link post
+      li = react_component 'Like', liked: post.liked_by?(current_user), likesCount: post.likes.count, url: like_post_path(post), isLoggedIn: logged_in?
       li
         = link_to '#'
           => fa_icon 'comments'

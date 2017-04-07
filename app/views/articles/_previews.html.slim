@@ -1,5 +1,5 @@
 - posts.each do |post|
-  li.article
+  li.post-preview
     .header
       .pull-right
         ul.list-inline.controls
@@ -13,11 +13,11 @@
                 = fa_icon :trash
 
       h3 = link_to post.title, article_path(post), class: 'title'
-      ul.list-inline.details
+      ul.list-inline.details.info
         li
           => fa_icon 'clock-o'
           | #{ time_ago_in_words post.created_at } назад
-        li.like == like_link post
+        li = react_component 'Like', liked: post.liked_by?(current_user), likesCount: post.likes.count, url: like_post_path(post), isLoggedIn: logged_in?
         li
           ul.list-inline
             - post.tags.each do |tag|

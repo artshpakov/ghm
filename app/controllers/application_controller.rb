@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
+  before_action :init
+
   helper_method :polymorphic_post_path
 
 
@@ -19,6 +21,17 @@ class ApplicationController < ActionController::Base
     when 'Article' then article_path(post)
     when 'BlogPost' then blog_post_path(post.user.slug, post)
     end
+  end
+
+
+  private
+
+  def init
+    gon.push({
+      paths: {
+        signin: signin_path
+      }
+    }) unless request.xhr?
   end
 
 end
