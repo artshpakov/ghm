@@ -1,0 +1,42 @@
+@import "mixins"
+@import "bootstrap/mixins"
+
+.blog-card
+  .header
+    overflow: hidden
+    margin-bottom: 4px
+    .avatar-tiny
+      float: left
+      margin-right: 10px
+
+.blog-header
+  overflow: hidden
+  height: 200px
+  background-color: crimson
+  position: relative
+  border-radius: 4px
+  color: #fff
+  a, a:hover
+    color: #fff
+    text-decoration: none
+  .gradient
+    position: absolute
+    left: 0
+    width: 200px
+    height: 100%
+    +gradient-horizontal(transparent, crimson)
+  .userpic
+    +cover(200px, 200px)
+
+  .info
+    float: left
+    width: 160px
+  .details
+    margin-left: 200px
+    padding: 12px 20px
+
+.followers
+  margin: 1em 0
+  .userpic
+    display: inline-block
+    margin: 0 5px 5px 0

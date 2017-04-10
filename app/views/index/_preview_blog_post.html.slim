@@ -1,0 +1,22 @@
+.post-index.post-preview.panel
+  .panel-body
+    .info.text-center
+      = avatar post.user, :inline
+      ul.list-inline
+        li = react_component 'Like', liked: post.liked_by?(current_user), likesCount: post.likes.count, url: like_post_path(post), isLoggedIn: logged_in?
+        li
+          = link_to '#'
+            => fa_icon 'comments'
+            = post.comments.count
+
+    .main
+      h3.title = link_to post.title, polymorphic_post_path(post), class: 'title'
+      ul.list-inline.details
+        li: small = link_to post.user.name, blog_path(post.user.slug)
+        li: small
+          => fa_icon 'clock-o'
+          | #{ time_ago_in_words post.created_at } назад
+      = sanitize truncate(post.text, 300)
+      ul.list-inline
+        - post.tags.each do |tag|
+          li = link_to "##{tag}", tag_articles_path(tag: tag), class: "label label-primary"

@@ -5,7 +5,14 @@ module PostsHelper
   end
 
   def truncate text, length
-    text && text.length > length ? "#{ text[0..length] }..." : text
+    if text.length > length
+      words = text.split(' ')
+      text = ''
+      words.each do |word|
+        return text+'...' if text.length >= length
+        text << ' '+word
+      end
+    end || text
   end
 
 end

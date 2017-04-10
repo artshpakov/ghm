@@ -9,7 +9,7 @@ html
 
   body
     header = yield :header
-    .container
+    .container-fluid
       - if flash[:notice]
         .alert.alert-success = flash[:notice]
       - if flash[:error]

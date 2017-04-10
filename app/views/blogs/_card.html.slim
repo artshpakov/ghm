@@ -1,18 +1,19 @@
-.blog-card
-  .header
-    = avatar blog.user, :tiny
-    b = link_to blog.user.name, blog_path(blog)
-    ul.list-inline
-      li
-        => fa_icon 'file-text-o'
-        = blog.posts_count
-      li
-        => fa_icon 'users'
-        = blog.followers_count
-      li
-        => fa_icon 'heart-o'
-        = blog.likes_count
-  p
-    small Свежий пост (#{ time_ago_in_words blog.most_recent_post.created_at } назад):
-    br
-    = link_to blog.most_recent_post.title, blog_post_path(blog, blog.most_recent_post)
+.blog-card.panel
+  .panel-body
+    .header
+      = avatar blog.user, :tiny
+      b = link_to blog.user.name, blog_path(blog)
+      ul.list-inline
+        li
+          => fa_icon 'file-text-o'
+          = blog.posts_count
+        li
+          => fa_icon 'users'
+          = blog.followers_count
+        li
+          => fa_icon 'heart-o'
+          = blog.likes_count
+    p
+      small Свежий пост (#{ time_ago_in_words blog.most_recent_post.created_at } назад):
+      br
+      = link_to blog.most_recent_post.title, blog_post_path(blog, blog.most_recent_post)

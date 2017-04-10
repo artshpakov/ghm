@@ -1,14 +1,24 @@
-nav.navbar.navbar-default
+nav.navbar-default
   .container-fluid
-    .navbar-header: .navbar-brand = link_to '', root_path, class: 'logo'
+    / = link_to 'javascript:;', class: 'visible-sm visible-xs'
+    /   = fa_icon :bars
 
     .navbar-text.pull-right
       ul.list-inline
         li
           - if logged_in?
-            = link_to profile_path
-              = avatar current_user, :tiny
-            = link_to 'Выйти', session_path(current_user.id), class: 'btn btn-default', method: :delete
+            .dropdown.show
+              = link_to 'javascript:;', class: 'dropdown-toggle', id: 'dropdownMenuLink', 'data-toggle'=>"dropdown", 'aria-haspopup'=>"true", 'aria-expanded'=>"false"
+                => avatar current_user, :tiny
+                span.caret
+              ul.dropdown-menu aria-labelledby="dropdownMenuLink"
+                li
+                  = link_to profile_path
+                    = fa_icon :user, text: 'Профиль'
+                li.divider
+                li
+                  = link_to session_path(current_user.id), method: :delete
+                    = fa_icon :'sign-out', text: 'Выйти'
           - else
             => link_to 'войти', signin_path
             ' |

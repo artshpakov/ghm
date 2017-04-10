@@ -1,4 +1,6 @@
-= render 'layouts/wide'
-  .row
-    .col-md-3 = render partial: '_partials/nav'
-    .col-md-9 = yield
+= render 'layouts/basic'
+  .row#main-area
+    .col-md-3.nopadding#sidebar = render partial: '_partials/nav'
+    .col-md-9.nopadding
+      header = render partial: '_partials/header'
+      #content = yield

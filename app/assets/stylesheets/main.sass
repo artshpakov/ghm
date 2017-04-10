@@ -1,0 +1,64 @@
+$sidebar-bgcolor: #242424
+$sidebar-link-color: #aaa
+$sidebar-link-hover: #000
+$sidebar-link-color-active: #F2BE35
+
+$content-background-color: #eee
+
+
+= sidebar-link($color)
+  transition: all 0.3s ease-out
+  text-decoration: none
+  color: $sidebar-link-color
+  padding: 10px 30px
+
+= sidebar-active-link($color)
+  +sidebar-link($color)
+  i
+    display: inline-block
+    padding: 6px
+    border-radius: 20px
+    margin-right: 5px
+  &:hover, &:focus, &:active
+    background-color: $sidebar-link-hover
+  &.active
+    color: $color
+    i
+      color: $sidebar-link-hover
+      background-color: $sidebar-link-color-active
+
+
+
+#main-area
+  background-color: $sidebar-bgcolor
+  #sidebar
+    .logo
+      +sidebar-link($sidebar-link-color-active)
+      padding-bottom: 0.5em
+      display: block
+    .nav a
+      +sidebar-active-link($sidebar-link-color-active)
+
+  #content
+    background-color: $content-background-color
+    padding: 30px 50px
+
+header
+  nav
+    line-height: 2.8em
+    .avatar
+      float: left
+      margin-right: 7px
+    .navbar-brand
+      padding-top: 0
+      padding-bottom: 0
+      .logo
+        display: block
+        background-image: image-url('logo.png')
+        background-size: cover
+        height: 52px
+        width: 466px
+        margin-top: 11px
+        margin-bottom: 7px
+    ul
+      margin: 0

@@ -3,10 +3,8 @@
 - if @blog.followers.any?
   .row.followers
     .col-md-12
-      p Followers (#{ @blog.user.followers.count })
       - @blog.followers.each do |user|
         = avatar user, :tiny, class: 'userpic'
-
   hr
 
 .row

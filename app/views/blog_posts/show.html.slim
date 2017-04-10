@@ -1,10 +1,13 @@
 = render partial: 'header'
-.row
-  .col-md-12.post-details
+br
+
+.post-details.panel
+  .panel-body
     h1.title = @blog_post.title
 
     .content = sanitize @blog_post.text
 
+    hr
     ul.list-inline.controls
       - if can? :edit, @blog_post
         li = link_to edit_post_path(@blog_post)

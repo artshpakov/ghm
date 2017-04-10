@@ -1,26 +1,27 @@
 - posts.each do |post|
-  li.post-preview
-    .header
-      .pull-right
-        ul.list-inline.controls
-          - if can? :edit, post
-            li
-              = link_to edit_post_path(post)
-                = fa_icon :edit
-          - if can? :destroy, post
-            li
-              = link_to post_path(post), method: :delete, data: { confirm: 'Are you sure?' }
-                = fa_icon :trash
+  li.post-preview.panel
+    .panel-body
+      .header
+        .pull-right
+          ul.list-inline.controls
+            - if can? :edit, post
+              li
+                = link_to edit_post_path(post)
+                  = fa_icon :edit
+            - if can? :destroy, post
+              li
+                = link_to post_path(post), method: :delete, data: { confirm: 'Are you sure?' }
+                  = fa_icon :trash
 
-      h3 = link_to post.title, blog_post_path(@blog, post), class: 'title'
-      ul.list-inline.details.info
-        li
-          => fa_icon 'clock-o'
-          | #{ time_ago_in_words post.created_at } назад
-        li = react_component 'Like', liked: post.liked_by?(current_user), likesCount: post.likes.count, url: like_post_path(post), isLoggedIn: logged_in?
-        li
-          ul.list-inline
-            - post.tags.each do |tag|
-              li = link_to "##{tag}", tag_articles_path(tag: tag), class: "label label-primary"
+        h3.title = link_to post.title, blog_post_path(@blog, post)
+        ul.list-inline.details.info
+          li
+            => fa_icon 'clock-o'
+            | #{ time_ago_in_words post.created_at } назад
+          li = react_component 'Like', liked: post.liked_by?(current_user), likesCount: post.likes.count, url: like_post_path(post), isLoggedIn: logged_in?
+          li
+            ul.list-inline
+              - post.tags.each do |tag|
+                li = link_to "##{tag}", tag_articles_path(tag: tag), class: "label label-primary"
 
-    = sanitize truncate(post.text, 500)
+      = sanitize truncate(post.text, 500)

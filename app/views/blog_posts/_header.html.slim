@@ -1,15 +1,12 @@
 .blog-header
+  .gradient
   .info
-    = avatar @blog.user, :profile
-    br
-    - if can? :follow, @blog.user
-      .text-center
-        - if @blog.is_followed_by?(current_user)
-          = link_to 'Unfollow', blog_follow_path(@blog), method: :delete, class: 'btn btn-primary'
-        - else
-          = link_to 'Follow', blog_follow_path(@blog), method: :post, class: 'btn btn-primary'
+    .userpic style="background-image: url(#{ @blog.user.avatar.thumb('200x200').url })"
   .details
     h1 = link_to @blog.user.name, blog_path(@blog)
-    p = @blog.user.profile['bio']
-
-hr
+    p.hidden-xs = @blog.user.profile['bio']
+    - if can? :follow, @blog.user
+      - if @blog.is_followed_by?(current_user)
+        = link_to 'Отменить подписку', blog_follow_path(@blog), method: :delete, class: 'btn btn-primary follow-link'
+      - else
+        = link_to 'Подписаться', blog_follow_path(@blog), method: :post, class: 'btn btn-primary follow-link'

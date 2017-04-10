@@ -1,0 +1,11 @@
+=cover($width, $height)
+  display: block
+  width: $width
+  height: $height
+  background-size: cover
+  background-position: center
+
+=avatar($size)
+  +cover($size, $size)
+  border-radius: $size/2
+  box-shadow: 0 2px 3px rgba(0,0,0,0.15) inset
