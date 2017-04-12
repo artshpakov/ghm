@@ -6,7 +6,7 @@ module AdminArea
       authorize! :enter, :admin
     end
 
-    # layout 'admin'
+    layout 'admin'
   end
 
 end

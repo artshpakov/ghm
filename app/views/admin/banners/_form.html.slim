@@ -1,0 +1,37 @@
+= form_for([:admin, @banner], html: {class: 'form-horizontal'}) do |f|
+  .form-group
+    .col-sm-2.control-label Название
+    .col-sm-10 = f.text_field :title, class: 'form-control'
+
+  .form-group
+    .col-sm-2.control-label Текст
+    .col-sm-10
+      = f.text_area :text, class: 'form-control'
+      small до 100 символов
+
+  .form-group
+    .col-sm-2.control-label Изображение
+    .col-sm-10
+      - if @banner.image.present?
+        = image_tag ImageManager.fetch(@banner.image, 200)
+      = f.file_field :image, class: 'form-control'
+
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      => f.check_box :form
+      | Форма подписки
+
+  .form-group
+    .col-sm-2.control-label Цвет фона
+    .col-sm-10
+      .input-group
+        span.input-group-addon #
+        = f.text_field :color, class: 'form-control'
+
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      => f.check_box :active
+      | Активен
+
+  .form-group
+    .col-sm-offset-2.col-sm-10 = f.submit 'Сохранить', class: 'button btn btn-primary'

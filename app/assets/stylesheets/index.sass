@@ -1,0 +1,35 @@
+@import "mixins"
+
+#banners
+  .banner
+    background-color: crimson
+    position: relative
+    position: relative
+    text-align: center
+    .image
+      +cover(100%, 400px)
+      filter: opacity(25%)
+    .container
+      position: absolute
+      top: 0
+      left: 0
+      text-align: center
+      width: 100%
+      .content
+        width: 60%
+        margin: 17% auto
+        color: #fff
+        font-size: 1.4em
+        .avatar, .title
+          margin: 0 auto 0.4em
+        .text
+          margin-bottom: 1em
+  .close
+    position: absolute
+    top: 0
+    right: 0
+    font-size: 2.5em
+    color: #fff
+    margin: 20px
+  form
+    color: #000

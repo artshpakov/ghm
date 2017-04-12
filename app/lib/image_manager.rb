@@ -1,7 +1,9 @@
 module ImageManager
 
-  def self.fetch img, size
-    Dragonfly.app.fetch(img).thumb("#{ size }x#{ size }^").url
+  def self.fetch img, size=nil
+    image = Dragonfly.app.fetch(img)
+    image = image.thumb("#{ size }x#{ size }^") if size
+    image.url
   end
 
   def self.store img

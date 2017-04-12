@@ -1,0 +1,10 @@
+.panel: .panel-body
+  = link_to new_admin_banner_path, class: 'btn btn-primary'
+    = fa_icon :plus, text: 'Добавить баннер'
+  br: br
+
+  - @banners.each do |banner|
+    p
+      b = link_to banner.title, edit_admin_banner_path(banner)
+      br
+      = banner.text

@@ -1,0 +1,29 @@
+- if @banners.any?
+
+  #banners.carousel.slide.panel
+    .carousel-inner role="listbox"
+      - @banners.each_with_index do |banner, index|
+        .item class="#{ 'active' if index.zero? }"
+          .banner style="background-color: ##{ banner.color.presence }"
+            .image style="background-image: url(#{ ImageManager.fetch(banner.image)})"
+            .container
+              .content
+                h1.title = banner.title
+
+                .text = banner.text
+
+                - if banner.settings['form']
+                  .row
+                    .col-md-8.col-md-offset-2
+                      = form_tag subscribe_path(banner)
+                        .input-group
+                          = text_field_tag :email, nil, class: 'form-control form-control-sm', placeholder: 'Оставьте свой e-mail'
+                          span.input-group-btn = submit_tag 'Подписаться', class: 'btn btn-primary'
+
+
+    a.left.carousel-control href="#banners" role="button" data-slide="prev"
+      span.glyphicon.glyphicon-chevron-left aria-hidden="true"
+    a.right.carousel-control href="#banners" role="button" data-slide="next"
+      span.glyphicon.glyphicon-chevron-right aria-hidden="true"
+    a.close href="javascript:;" role="close-carousel" = fa_icon :times
+  hr

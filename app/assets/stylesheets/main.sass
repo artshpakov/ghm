@@ -1,3 +1,6 @@
+@import "mixins"
+
+
 $sidebar-bgcolor: #242424
 $sidebar-link-color: #aaa
 $sidebar-link-hover: #000
@@ -5,6 +8,9 @@ $sidebar-link-color-active: #F2BE35
 
 $content-background-color: #eee
 
+
+.panel-heading h3
+  margin: 0
 
 = sidebar-link($color)
   transition: all 0.3s ease-out
@@ -36,6 +42,12 @@ $content-background-color: #eee
       +sidebar-link($sidebar-link-color-active)
       padding-bottom: 0.5em
       display: block
+      color: #fff
+      font-size: 1.2em
+      .logo-image
+        +cover(1em, 1em)
+        display: inline-block
+        background-image: image-url('logo.png')
     .nav a
       +sidebar-active-link($sidebar-link-color-active)
 
@@ -62,3 +74,8 @@ header
         margin-bottom: 7px
     ul
       margin: 0
+
+
+.page-title
+  margin: 0 0 1em
+  text-align: center

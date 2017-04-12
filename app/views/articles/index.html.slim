@@ -1,5 +1,7 @@
 .row
   .col-md-12
+    h2.page-title = fa_icon :briefcase, text: 'Кейсы'
+
     ul.list-unstyled role="preview-list"
       = render partial: 'previews', locals: { posts: @articles }
     .text-center = link_to 'Загрузить еще', 'javascript:;', class: 'btn btn-primary', role: 'load-more', data: { url: articles_path }

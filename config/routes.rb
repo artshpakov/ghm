@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   scope controller: :index do
     root action: :index
     get :signin, :signup, :forgot
+    post 'subscribe/:banner_id' => :subscribe, as: :subscribe
   end
 
   resources :users, only: :create
@@ -49,6 +50,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'dashboard#index'
+    resources :banners, only: %i(index new create edit update)
   end
 
 end

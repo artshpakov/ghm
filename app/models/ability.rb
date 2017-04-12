@@ -23,6 +23,7 @@ class Ability
 
     if user.has_role?(User::Roles::ADMIN)
       can :enter, :admin
+      can :crud, Banner
     end
   end
 end

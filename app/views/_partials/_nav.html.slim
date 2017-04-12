@@ -1,12 +1,10 @@
-h1 = link_to 'ghm.im', root_path, class: 'logo hidden-sm hidden-xs'
-
 ul.nav
   li
     = active_link_to root_path, active: :exclusive
       = fa_icon :'newspaper-o', text: 'Лента'
   li
     = active_link_to articles_path
-      = fa_icon :briefcase, text: 'Статьи'
+      = fa_icon :briefcase, text: 'Кейсы'
   li
     = active_link_to blogs_path
       = fa_icon :'align-left', text: 'Блоги'

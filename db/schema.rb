@@ -10,10 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327133854) do
+ActiveRecord::Schema.define(version: 20170412185757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "banners", force: :cascade do |t|
+    t.string   "title"
+    t.string   "image"
+    t.string   "text",       limit: 100
+    t.string   "emails",                 default: [],   array: true
+    t.json     "settings",               default: {}
+    t.boolean  "active",                 default: true
+    t.datetime "created_at"
+  end
+
+  create_table "bootsy_image_galleries", force: :cascade do |t|
+    t.string   "bootsy_resource_type"
+    t.integer  "bootsy_resource_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bootsy_images", force: :cascade do |t|
+    t.string   "image_file"
+    t.integer  "image_gallery_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "followings", id: false, force: :cascade do |t|
     t.integer "follower_id", null: false
@@ -34,12 +58,12 @@ ActiveRecord::Schema.define(version: 20170327133854) do
     t.string   "title",                   null: false
     t.text     "text",                    null: false
     t.string   "slug",                    null: false
-    t.string   "source"
     t.string   "tags",       default: [],              array: true
     t.integer  "likes",      default: [],              array: true
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.string   "kind",                    null: false
+    t.json     "settings",   default: {}
     t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end
 

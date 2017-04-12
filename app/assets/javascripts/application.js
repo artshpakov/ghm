@@ -12,4 +12,6 @@
 
 $(function() {
   if ($('#content').height() < 500) $('#content').height('500px'); // TODO temporarily
+
+  $('[role="close-carousel"]').click(() => $('#banners').hide())
 });
